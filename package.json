@@ -9,8 +9,9 @@
   "author": "giannone nehuen",
   "license": "ISC",
   "dependencies": {
+    "bash": "^0.0.1",
+    "git": "^0.1.5",
     "node.js": "^0.0.1-security"
   },
-  "devDependencies": {},
   "description": ""
 }
