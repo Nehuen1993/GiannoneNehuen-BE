@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+const util = require('util');
 
 class ProductManager {
     constructor(productos) {
@@ -17,39 +17,40 @@ async getProducts() {
    
     }
 
+
     async addProduct(nombre, descripcion, precio, img, code, stock) {
-        try{
-        const productos = await this.readProducts();
-        const producto_id = productos.length > 0 ? productos [productos.length -1].id : 0
-        const nuevoProducto_id = producto_id + 1
-        const producto= {
-           id: nuevoProducto_id,
-           nombre,
-           descripcion,
-           precio,
-           img,
-           code,
-           stock
+        try {
+            const productos = await this.readProducts();
+            const producto_id = productos.length > 0 ? productos[productos.length - 1].id : 0;
+            const nuevoProducto_id = producto_id + 1;
+            const producto = {
+                id: nuevoProducto_id,
+                nombre,
+                descripcion,
+                precio,
+                img,
+                code,
+                stock
+            };
+            productos.push(producto);
+            await this.writeProducts(productos);
+            return nuevoProducto_id;
+        } catch (error) {
+            console.error("Error en addProduct:", error);
+            throw new Error("addProduct - Error");
         }
-        productos.push(producto);
-        await this.writeProducts(producto)
-        return nuevoProducto_id
-        
-    } catch (error) {
-        console.error("Error en addProduct:", error);
-        throw new Error ("addProduct - Error")
     }
-    }
+    
     async getById (producto_id){
         try{
         const productos = await this.readProducts();
         const producto_existe = productos.find(producto => producto.id === producto_id);
         if(!producto_existe) {
             
-            console.log (producto_existe, "getByid - Producto no existe");
+            console.log ( "getByid - Producto no existe");
             return;
         } else {
-            console.log ("getByid - Producto existente");
+            console.log ("getByid - Producto existente y es", producto_existe);
             return; 
         }
     }
@@ -81,55 +82,48 @@ async getProducts() {
 }
 async deleteProductById(producto_id) {
     try{
-        const productos = await this.readProducts();
-        const producto_existe = productos.find(producto => producto.id === producto_id);
-        await this.writeProducts(producto_existe)}
+        
+        let productos = await this.readProducts();
+        const dontDelete = parseInt(producto_id); 
+        const productosFiltrados = productos.filter(producto => producto.id !== dontDelete);
+        await this.writeProducts(productosFiltrados);
+    }
     catch (error) {
         throw new Error ("deleteProductById -Error");
     }    
 }
 async readProducts() {
     try {
-        const products = await fs.promises.readFile('this.productos', 'utf8');
-        return products ? JSON.parse(productos) : [];
+        const readFileAsync = util.promisify(fs.readFile);
+        const productos = await readFileAsync('archivo.txt', 'utf8');
+        return productos ? JSON.parse(productos) : [];
+    } catch (error) {
+        console.error("Error en readProducts:", error);
+        throw new Error("readProducts - Error");
     }
-    catch (error) {
-        
-        return [];
-}
 }
 async writeProducts(productos) {
     try {
-        await fs.promises.writeFile('this.productos', JSON.stringify(productos,null, 2));
+        const jsonArray = JSON.stringify(productos, null, 2);
+        await fs.promises.writeFile('archivo.txt', jsonArray);
+    } catch (error) {
+        console.error("Error en writeProducts:", error);
+        throw new Error("writeProducts - Error");
     }
-    catch (error) {
-        throw new Error ("writeProducts - Error");
-    
-}
-}
 }
 
-const prueba = async () => {
-    const productos = new ProductManager("archivo.txt");
-    const produ = await productos.addProduct("Producto1", "Descripcion1", 100, "img1", "a1", 10)
-    console.log(produ);
-    const mostrarProductos = await productos.getProducts();
-    console.log (mostrarProductos);
 }
 
-prueba();
+// const prueba = async () => {
+//     const productos = new ProductManager("archivo.txt");
+//     await productos.addProduct("Producto1", "Descripcion1", 101, "img1", "a1", 11)
+//     const getId= await productos.getById(1);
+//     const update = await productos.updateProduct(2, "ProductoUpdate", "DescripcionUpdate", 102, "imgUpdate", "aUpdate", 12)
+//     const deleteId = await productos.deleteProductById(1)
+//     const mostrarProductos = await productos.getProducts();
+//     console.log ("muestro productos" ,mostrarProductos);
+// }
+
+// prueba();
 
 
-
-    // const eliminarProducto = await productos.deleteProductById(1);
-
-    // productManager.addProduct("Producto1", "Descripcion1", 100, "img1", "a1", 10);
-    // productManager.addProduct("Producto2", "Descripcion2", 200, "img2", "a2", 20);
-    // productManager.addProduct("Producto3", "Descripcion3", 300, "img3", "a3", 30);
-    
-    // productManager.getById(1);
-    // productManager.getById(15);
-
-
-    // const productos = productManager.getProducts();
-    // console.log ("los productos son: ",productos)

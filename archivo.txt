@@ -1,0 +1,128 @@
+[
+  {
+    "id": 2,
+    "nombre": "ProductoUpdate",
+    "descripcion": "DescripcionUpdate",
+    "precio": 102,
+    "img": "imgUpdate",
+    "code": "aUpdate",
+    "stock": 12
+  },
+  {
+    "id": 3,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 4,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 5,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 6,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 7,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 8,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 9,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 10,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 11,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 12,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 13,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 14,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  },
+  {
+    "id": 15,
+    "nombre": "Producto1",
+    "descripcion": "Descripcion1",
+    "precio": 101,
+    "img": "img1",
+    "code": "a1",
+    "stock": 11
+  }
+]
