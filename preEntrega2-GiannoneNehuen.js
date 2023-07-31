@@ -114,9 +114,12 @@ async writeProducts(productos) {
 
 }
 
+export default ProductManager
+
 // const prueba = async () => {
 //     const productos = new ProductManager("archivo.txt");
 //     await productos.addProduct("Producto1", "Descripcion1", 101, "img1", "a1", 11)
+
 //     const getId= await productos.getById(1);
 //     const update = await productos.updateProduct(2, "ProductoUpdate", "DescripcionUpdate", 102, "imgUpdate", "aUpdate", 12)
 //     const deleteId = await productos.deleteProductById(1)
