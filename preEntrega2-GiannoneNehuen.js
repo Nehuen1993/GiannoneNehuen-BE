@@ -114,7 +114,7 @@ async writeProducts(productos) {
 
 }
 
-export default ProductManager
+export default ProductManager;
 
 // const prueba = async () => {
 //     const productos = new ProductManager("archivo.txt");
